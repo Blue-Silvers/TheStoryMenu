@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
 
 public class MainMenu : MonoBehaviour
 {
@@ -20,6 +21,11 @@ public class MainMenu : MonoBehaviour
 
     [Header("Background")]
     [SerializeField] private GameObject[] background;
+
+    [Header("Pages")]
+    [SerializeField] private GameObject[] page;
+    int actualPage = 0;
+    [SerializeField] int gamePage, mapPage, bestiairePage, florePage, logsPage, controlsPage, SettingsPage;
 
     [Header("Input Manager (don't touch)")]
     [SerializeField] private InputActionReference escapeM;
@@ -38,12 +44,27 @@ public class MainMenu : MonoBehaviour
                 background[i].SetActive(false);
             }
         }
+        for (int i = 0; i < page.Length; i++)
+        {
+            if (page[i] != page[actualPage])
+            {
+                page[i].SetActive(false);
+            }
+        }
     }
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.JoystickButton1))
         {
             CloseSettingsButton();
+        }
+        if (Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            NextPage();
+        }
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            PreviousPage();
         }
     }
     public void Level1()
@@ -105,5 +126,26 @@ public class MainMenu : MonoBehaviour
     private void EscapeM(InputAction.CallbackContext obj)
     {
         CloseSettingsButton();
+    }
+
+    private void NextPage()
+    {
+        page[actualPage].SetActive(false);
+        actualPage += 1;
+        if (actualPage == page.Length)
+        {
+            actualPage = 0;
+        }
+        page[actualPage].SetActive(true);
+    }
+    private void PreviousPage()
+    {
+        page[actualPage].SetActive(false);
+        actualPage -= 1;
+        if (actualPage == -1)
+        {
+            actualPage = page.Length -1;
+        }
+        page[actualPage].SetActive(true);
     }
 }
