@@ -350,6 +350,14 @@ PrefabInstance:
       propertyPath: m_AnchorMin.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1640702862356262284, guid: ee17fbc793a4973468db4d0d249d882c, type: 3}
+      propertyPath: m_Actions
+      value: 
+      objectReference: {fileID: -944628639613478452, guid: a87411adc9e459849bd389e9aff5af9f, type: 3}
+    - target: {fileID: 1640702862356262284, guid: ee17fbc793a4973468db4d0d249d882c, type: 3}
+      propertyPath: m_DefaultActionMap
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 2220255777144175123, guid: ee17fbc793a4973468db4d0d249d882c, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -406,6 +414,18 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6441309445678159201, guid: ee17fbc793a4973468db4d0d249d882c, type: 3}
+      propertyPath: escapeM
+      value: 
+      objectReference: {fileID: 9192049423308891530, guid: a87411adc9e459849bd389e9aff5af9f, type: 3}
+    - target: {fileID: 6441309445678159201, guid: ee17fbc793a4973468db4d0d249d882c, type: 3}
+      propertyPath: background.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6441309445678159201, guid: ee17fbc793a4973468db4d0d249d882c, type: 3}
+      propertyPath: background.Array.data[0]
+      value: 
+      objectReference: {fileID: 421853501}
     - target: {fileID: 8508108280228260333, guid: ee17fbc793a4973468db4d0d249d882c, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
