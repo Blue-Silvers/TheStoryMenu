@@ -10,14 +10,11 @@ public class MainMenu : MonoBehaviour
 {
     [Header("Level selection for button")]
     [SerializeField] private string FirstLevelToLoad;
-    [SerializeField] private string SecondLevelToLoad;
-    [SerializeField] private string ThirdLevelToLoad;
     [SerializeField] private string CreditsLoad;
 
     [Header("Windows")]
-    [SerializeField] private GameObject settingsWindow, levelsWindow;
     [SerializeField] private EventSystem eventSystem;
-    [SerializeField] private GameObject ngButton, settingsButton, lvlButton;
+    [SerializeField] private GameObject ngButton, settingsButton, conrolButton;
 
     [Header("Background")]
     [SerializeField] private GameObject[] background;
@@ -25,15 +22,13 @@ public class MainMenu : MonoBehaviour
     [Header("Pages")]
     [SerializeField] private GameObject[] page;
     int actualPage = 0;
-    [SerializeField] int gamePage, mapPage, bestiairePage, florePage, logsPage, controlsPage, SettingsPage;
+    [SerializeField] int gamePage, mapPage, bestiairePage, florePage, logsPage, controlsPage, settingsPage;
 
     [Header("Input Manager (don't touch)")]
     [SerializeField] private InputActionReference escapeM;
     private void Start()
     {
         Time.timeScale = 1;
-        settingsWindow.SetActive(false);
-        levelsWindow.SetActive(false);
 
         int rdBackground = Random.Range(0, background.Length);
         background[rdBackground].SetActive(true);
@@ -56,62 +51,56 @@ public class MainMenu : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.JoystickButton1))
         {
-            CloseSettingsButton();
+            GamePage();
         }
-        if (Input.GetKeyDown(KeyCode.RightArrow))
+        if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.JoystickButton5))
         {
             NextPage();
         }
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.JoystickButton4))
         {
             PreviousPage();
         }
     }
-    public void Level1()
+    public void GamePage()
     {
-        SceneManager.LoadScene(FirstLevelToLoad);
-        settingsWindow.SetActive(false);
-        levelsWindow.SetActive(false);
+        SelectPage(gamePage);
+        eventSystem.SetSelectedGameObject(ngButton);
     }
-    public void Level2()
+    public void MapPage()
     {
-        SceneManager.LoadScene(SecondLevelToLoad);
-        settingsWindow.SetActive(false);
-        levelsWindow.SetActive(false);
+        SelectPage(mapPage);
     }
-    public void Level3()
+    public void BestiairePage()
     {
-        SceneManager.LoadScene(ThirdLevelToLoad);
-        settingsWindow.SetActive(false);
-        levelsWindow.SetActive(false);
+        SelectPage(bestiairePage);
     }
-
+    public void FlorePage()
+    {
+        SelectPage(florePage);
+    }
+    public void LogsPage()
+    {
+        SelectPage(logsPage);
+    }
+    public void ControlsPage()
+    {
+        SelectPage(controlsPage);
+    }
     public void SettingsButton()
     {
-        settingsWindow.SetActive(true);
-        levelsWindow.SetActive(false);
+        SelectPage(settingsPage);
         eventSystem.SetSelectedGameObject(settingsButton);
     }
 
-    public void LevelSelectionButton()
+    public void NewGame()
     {
-        levelsWindow.SetActive(true);
-        settingsWindow.SetActive(false);
-        eventSystem.SetSelectedGameObject(lvlButton);
-    }
-
-    public void CloseSettingsButton()
-    {
-        settingsWindow.SetActive(false);
-        levelsWindow.SetActive(false);
-        eventSystem.SetSelectedGameObject(ngButton);
+        SceneManager.LoadScene(FirstLevelToLoad);
     }
 
     public void Credit()
     {
         SceneManager.LoadScene(CreditsLoad);
-        settingsWindow.SetActive(false);
-        levelsWindow.SetActive(false);
     }
 
     public void QuitGame()
@@ -125,7 +114,7 @@ public class MainMenu : MonoBehaviour
     }
     private void EscapeM(InputAction.CallbackContext obj)
     {
-        CloseSettingsButton();
+        GamePage();
     }
 
     private void NextPage()
@@ -146,6 +135,13 @@ public class MainMenu : MonoBehaviour
         {
             actualPage = page.Length -1;
         }
+        page[actualPage].SetActive(true);
+    }
+
+    private void SelectPage(int index)
+    {
+        page[actualPage].SetActive(false);
+        actualPage = index;
         page[actualPage].SetActive(true);
     }
 }
