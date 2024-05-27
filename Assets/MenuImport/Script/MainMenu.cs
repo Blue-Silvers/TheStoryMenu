@@ -117,7 +117,7 @@ public class MainMenu : MonoBehaviour
         GamePage();
     }
 
-    private void NextPage()
+    public void NextPage()
     {
         page[actualPage].SetActive(false);
         actualPage += 1;
@@ -127,7 +127,7 @@ public class MainMenu : MonoBehaviour
         }
         page[actualPage].SetActive(true);
     }
-    private void PreviousPage()
+    public void PreviousPage()
     {
         page[actualPage].SetActive(false);
         actualPage -= 1;
