@@ -498,6 +498,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 128843219}
   m_CullTransparentMesh: 1
+--- !u!1 &191349157 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6680292650503350822, guid: f25dcd618d3acd64795bf8bb32edb6c9, type: 3}
+  m_PrefabInstance: {fileID: 2143890202}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &240007688
 GameObject:
   m_ObjectHideFlags: 0
@@ -2734,6 +2739,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -985
       objectReference: {fileID: 0}
+    - target: {fileID: 6441309445678159201, guid: ee17fbc793a4973468db4d0d249d882c, type: 3}
+      propertyPath: conrolButton
+      value: 
+      objectReference: {fileID: 191349157}
     - target: {fileID: 6441309445678159201, guid: ee17fbc793a4973468db4d0d249d882c, type: 3}
       propertyPath: background.Array.data[0]
       value: 
