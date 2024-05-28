@@ -96,6 +96,7 @@ public class MainMenu : MonoBehaviour
     public void NewGame()
     {
         SceneManager.LoadScene(FirstLevelToLoad);
+        print("ok");
     }
 
     public void Credit()
